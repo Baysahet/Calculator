@@ -5,10 +5,14 @@ root.title("Calculator")
 root.geometry("700x600")
 
 def function():
-    method = eval(entry.get())
-    entry.delete(0, tk.END)
-    entry.insert(tk.END,method)
-    print(method)
+    try:
+        method = eval(entry.get())
+        entry.delete(0, tk.END)
+        entry.insert(tk.END,method)
+        print(method)
+    except NameError:
+        entry.delete(0, tk.END)
+        print("Error")
 
 def delete():
     entry.delete(0, tk.END)
@@ -56,7 +60,7 @@ def add_letter_bol():
     entry.insert(tk.END, "/")
 
 entry = tk.Entry(root, font=("Arial", 36, "bold"))
-entry.place(x=60, y=5)
+entry.place(x=80, y=5)
 
 text = tk.Label(root, text="Baysahedow Corparation", font=("Arial", 4, "bold"), fg="Black")
 text.place(x=620, y=580)
@@ -103,8 +107,8 @@ button_bol.place(x=580, y=315)
 button_minus = tk.Button(root, text="-", font=("Arial", 16, "bold"), width=8, height=3, fg="Black", command=add_letter_minus)
 button_minus.place(x=460, y=315)
 
-delete_button = tk.Button(root, text="DEL", font=("Arial", 16, "bold"), width=4, height=2, fg="Black", command=delete)
-delete_button.place(x=625, y=5)
+delete_button = tk.Button(root, text="DEL", font=("Arial", 16, "bold"), width=8, height=4, fg="Black", command=delete)
+delete_button.place(x=30, y=460)
 
 entry_button = tk.Button(root, text="Enter", font=("Arial", 16, "bold"), width=17, height=4, fg="Black", command=function)
 entry_button.place(x=460, y=100)
