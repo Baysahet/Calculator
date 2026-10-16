@@ -62,7 +62,7 @@ def add_letter_kop():
 def add_letter_bol():
     entry.insert(tk.END, "/")
 
-entry = tk.Entry(root, font=("Arial", 36, "bold"), state='readonly')
+entry = tk.Entry(root, font=("Arial", 36, "bold"))
 entry.place(x=80, y=5)
 
 text = tk.Label(root, text="Baysahedow Corparation", font=("Arial", 4, "bold"), fg="Black")
