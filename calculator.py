@@ -6,16 +6,20 @@ root.geometry("700x600")
 
 def function():
     try:
-        method = eval(entry.get())
-        entry.delete(0, tk.END)
-        entry.insert(tk.END,method)
-        print(method)
+        method = entry.get()
+        if method != "":
+            method = eval(entry.get())
+            entry.delete(0, tk.END)
+            entry.insert(tk.END,method)
+            print(method)
+        else:
+            print("[ERROR] Enter Numbers Please!")
     except NameError:
         entry.delete(0, tk.END)
-        print("Error")
+        print("[ERROR] Enter Numbers Please!")
     except SyntaxError:
         entry.delete(0, tk.END)
-        print("Error")
+        print("[ERROR]")
 
 def delete():
     entry.delete(0, tk.END)
