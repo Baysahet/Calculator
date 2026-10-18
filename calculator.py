@@ -20,6 +20,8 @@ def function():
     except SyntaxError:
         entry.delete(0, tk.END)
         print("[ERROR]")
+    except ZeroDivisionError:
+        print("[ERROR] Zero Division Error")
 
 def delete():
     entry.delete(0, tk.END)
@@ -55,16 +57,44 @@ def add_letter0():
     entry.insert(tk.END, "0")
 
 def add_letter_plus():
-    entry.insert(tk.END, "+")
+    kop_total = entry.get()
+    variable = kop_total.count("-")
+    if variable > 0:
+        print("[INVALID INPUT]")
+    elif kop_total == "":
+        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+    else:
+        entry.insert(tk.END, "-")
 
 def add_letter_minus():
-    entry.insert(tk.END, "-")
+        kop_total = entry.get()
+        variable = kop_total.count("-")
+        if variable > 0:
+            print("[INVALID INPUT]")
+        elif kop_total == "":
+            print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+        else:
+            entry.insert(tk.END, "-")
 
 def add_letter_kop():
-    entry.insert(tk.END, "*")
+    kop_total = entry.get()
+    variable = kop_total.count("*")
+    if variable > 1:
+        print("[INVALID INPUT]")
+    elif kop_total == "":
+        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+    else:
+        entry.insert(tk.END, "*")
 
 def add_letter_bol():
-    entry.insert(tk.END, "/")
+    kop_total = entry.get()
+    variable = kop_total.count("-")
+    if variable > 0:
+        print("[INVALID INPUT]")
+    elif kop_total == "":
+        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+    else:
+        entry.insert(tk.END, "-")
 
 entry = tk.Entry(root, font=("Arial", 32, "bold"))
 entry.place(x=8, y=5)
