@@ -58,13 +58,13 @@ def add_letter0():
 
 def add_letter_plus():
     kop_total = entry.get()
-    variable = kop_total.count("-")
+    variable = kop_total.count("+")
     if variable > 0:
         print("[INVALID INPUT]")
     elif kop_total == "":
         print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
     else:
-        entry.insert(tk.END, "-")
+        entry.insert(tk.END, "+")
 
 def add_letter_minus():
         kop_total = entry.get()
@@ -88,13 +88,13 @@ def add_letter_kop():
 
 def add_letter_bol():
     kop_total = entry.get()
-    variable = kop_total.count("-")
+    variable = kop_total.count("/")
     if variable > 0:
         print("[INVALID INPUT]")
     elif kop_total == "":
         print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
     else:
-        entry.insert(tk.END, "-")
+        entry.insert(tk.END, "/-")
 
 entry = tk.Entry(root, font=("Arial", 32, "bold"))
 entry.place(x=8, y=5)
