@@ -18,7 +18,6 @@ def function():
         entry.delete(0, tk.END)
         print("[ERROR] Enter Numbers Please!")
     except SyntaxError:
-        entry.delete(0, tk.END)
         print("[ERROR]")
     except ZeroDivisionError:
         print("[ERROR] Zero Division Error")
@@ -94,7 +93,7 @@ def add_letter_bol():
     elif kop_total == "":
         print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
     else:
-        entry.insert(tk.END, "/-")
+        entry.insert(tk.END, "/")
 
 entry = tk.Entry(root, font=("Arial", 32, "bold"))
 entry.place(x=8, y=5)
