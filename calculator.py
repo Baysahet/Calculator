@@ -95,8 +95,8 @@ def add_letter_bol():
     else:
         entry.insert(tk.END, "/")
 
-entry = tk.Entry(root, font=("Arial", 32, "bold"))
-entry.place(x=8, y=5)
+entry = tk.Entry(root, font=("Arial", 36, "bold"))
+entry.place(x=8, y=5, height=70, width=480)
 
 text = tk.Label(root, text="Baysahedow Corparation", font=("Arial", 4, "bold"), fg="Black")
 text.place(x=620, y=580)
