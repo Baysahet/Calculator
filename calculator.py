@@ -6,25 +6,60 @@ root.geometry("500x680")
 
 root.resizable(False, False)
 
-def function():
+Console = True
+
+def analyze_file_hystory():
     try:
-        method = entry.get()
-        if method != "":
+        with open("history.txt", "r") as file:
+            file.read()
+    except FileNotFoundError:
+        with open("history.txt", "a") as file:
+            file.write(" * * * * * HYSTORY * * * * *\n")
+
+def analyze_file_instructions():
+    try:
+        with open("instructions.txt", "r") as file:
+            file.read()
+    except FileNotFoundError:
+        with open("instructions.txt", "a", encoding="utf-8") as file:
+            file.write(f" * * * * * Instructions * * * * *\n\n- - - - - Русский - - - - -\n1. Нажмите Кнопку 'C' Чтобы Удалить По Одному и Удерживайте 'C' Чтобы Удалить Все\n2. Введите Комбинацию '4973903.944' Чтобы Отключить Консоль или Введите Комбинацию '4973903.97' Чтобы Включить Консоль\n\n- - - - - English - - - - - \n1. Press the 'C' button to delete one by one and hold 'C' to delete all. \n2. Enter the combination '4973903.944' to disable the console or enter the combination '4973903.97' to enable the console.")
+
+analyze_file_hystory()
+analyze_file_instructions()
+
+def function():
+    global Console
+    try:
+        variable = entry.get()
+        if variable == "4973903.944":
+            Console = False
+            entry.delete(0, tk.END)
+        elif variable == "4973903.97":
+            Console = True
+            entry.delete(0, tk.END)
+        elif variable != "":
             method = eval(entry.get())
             entry.delete(0, tk.END)
             entry.insert(tk.END,method)
-            print(method)
+            with open("hystory.txt", "a") as file:
+                file.write(f"{variable} = {method}\n")
+            if Console == True:
+                print(f"{variable} = {method}")
         else:
             print("[ERROR] Enter Numbers Please!")
     except NameError:
         entry.delete(0, tk.END)
-        print("[ERROR] Enter Numbers Please!")
+        if Console == True:
+            print("[ERROR] Enter Numbers Please!")
     except SyntaxError:
-        print("[ERROR]")
+        if Console == True:
+            print("[ERROR]")
     except ZeroDivisionError:
-        print("[ERROR] Zero Division Error")
+        if Console == True:
+            print("[ERROR] Zero Division Error")
     except TypeError:
-        print()
+        if Console == True:
+            print()
 
 press_time = 0
 
@@ -118,6 +153,16 @@ def add_letter_bol():
     else:
         entry.insert(tk.END, "/")
 
+def add_letter_ostatok():
+    kop_total = entry.get()
+    variable = kop_total.count("%")
+    if variable > 0:
+        print("[INVALID INPUT]")
+    elif kop_total == "":
+        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+    else:
+        entry.insert(tk.END, "%")
+
 def add_letter_tocka():
     kop_total = entry.get()
     variable = kop_total.count(".")
@@ -172,6 +217,9 @@ button_bol.place(x=373, y=80)
 
 button_minus = tk.Button(root, text="-", font=("Arial", 16, "bold"), width=8, height=4, fg="White", bg="Black", command=add_letter_minus)
 button_minus.place(x=373, y=320)
+
+button_ostatok = tk.Button(root, text="%", font=("Arial", 16, "bold"), width=8, height=4, fg="White", bg="Black", command=add_letter_ostatok)
+button_ostatok.place(x=255, y=80)
 
 tocka_button = tk.Button(root, text=".", font=("Arial", 16, "bold"), width=8, height=4, fg="White", bg="Black", command=add_letter_tocka)
 tocka_button.place(x=15, y=560)
