@@ -1,0 +1,9 @@
+ * * * * * Instructions * * * * *
+
+- - - - - Русский - - - - -
+1. Нажмите Кнопку 'C' Чтобы Удалить По Одному и Удерживайте 'C' Чтобы Удалить Все
+2. Введите Комбинацию '4973903.944' Чтобы Отключить Консоль или Введите Комбинацию '4973903.97' Чтобы Включить Консоль
+
+- - - - - English - - - - - 
+1. Press the 'C' button to delete one by one and hold 'C' to delete all. 
+2. Enter the combination '4973903.944' to disable the console or enter the combination '4973903.97' to enable the console.

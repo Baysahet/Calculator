@@ -41,7 +41,7 @@ def function():
             method = eval(entry.get())
             entry.delete(0, tk.END)
             entry.insert(tk.END,method)
-            with open("hystory.txt", "a") as file:
+            with open("history.txt", "a") as file:
                 file.write(f"{variable} = {method}\n")
             if Console == True:
                 print(f"{variable} = {method}")
