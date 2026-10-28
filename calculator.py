@@ -1,5 +1,6 @@
 import tkinter as tk
 import time
+
 root = tk.Tk()
 root.title("Calculator")
 root.geometry("500x680")
@@ -7,6 +8,8 @@ root.geometry("500x680")
 root.resizable(False, False)
 
 Console = True
+
+Variable = True
 
 def analyze_file_hystory():
     try:
@@ -22,7 +25,7 @@ def analyze_file_instructions():
             file.read()
     except FileNotFoundError:
         with open("instructions.txt", "a", encoding="utf-8") as file:
-            file.write(f" * * * * * Instructions * * * * *\n\n- - - - - Русский - - - - -\n1. Нажмите Кнопку 'C' Чтобы Удалить По Одному и Удерживайте 'C' Чтобы Удалить Все\n2. Введите Комбинацию '4973903.944' Чтобы Отключить Консоль или Введите Комбинацию '4973903.97' Чтобы Включить Консоль\n\n- - - - - English - - - - - \n1. Press the 'C' button to delete one by one and hold 'C' to delete all. \n2. Enter the combination '4973903.944' to disable the console or enter the combination '4973903.97' to enable the console.")
+            file.write(f" * * * * * Instructions * * * * *\n\n- - - - - Русский - - - - -\n1. Нажмите Кнопку 'C' Чтобы Удалить По Одному и Удерживайте Кнопку 'C' Чтобы Удалить Все\n2. Введите Комбинацию '4973903.944' Чтобы Отключить Консоль или Введите Комбинацию '4973903.97' Чтобы Включить Консоль\n\n- - - - - English - - - - - \n1. Press the 'C' button to delete one by one and hold 'C' to delete all. \n2. Enter the combination '4973903.944' to disable the console or enter the combination '4973903.97' to enable the console.")
 
 analyze_file_hystory()
 analyze_file_instructions()
@@ -119,7 +122,7 @@ def add_letter_plus():
     if variable > 0:
         print("[INVALID INPUT]")
     elif kop_total == "":
-        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+        print("[ERROR]")
     else:
         entry.insert(tk.END, "+")
 
@@ -129,7 +132,7 @@ def add_letter_minus():
         if variable > 0:
             print("[INVALID INPUT]")
         elif kop_total == "":
-            print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+            print("[ERROR]")
         else:
             entry.insert(tk.END, "-")
 
@@ -139,7 +142,7 @@ def add_letter_kop():
     if variable > 1:
         print("[INVALID INPUT]")
     elif kop_total == "":
-        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+        print("[ERROR]")
     else:
         entry.insert(tk.END, "*")
 
@@ -149,7 +152,7 @@ def add_letter_bol():
     if variable > 0:
         print("[INVALID INPUT]")
     elif kop_total == "":
-        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+        print("[ERROR]")
     else:
         entry.insert(tk.END, "/")
 
@@ -159,7 +162,7 @@ def add_letter_ostatok():
     if variable > 0:
         print("[INVALID INPUT]")
     elif kop_total == "":
-        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+        print("[ERROR]")
     else:
         entry.insert(tk.END, "%")
 
@@ -169,7 +172,7 @@ def add_letter_tocka():
     if variable > 0:
         print("[INVALID INPUT]")
     elif kop_total == "":
-        print("[ERROR] Пожалуйста Напишите Какуюто Цифру!")
+        print("[ERROR]")
     else:
         entry.insert(tk.END, ".")
 
@@ -232,5 +235,44 @@ delete_button.bind("<ButtonRelease-1>", on_release)
 
 entry_button = tk.Button(root, text="Enter", font=("Arial", 16, "bold"), width=17, height=4, fg="White", bg="Black", command=function)
 entry_button.place(x=255, y=560)
+
+def window2():
+    window2 = tk.Toplevel()
+    window2.title("Castom")
+    window2.geometry("500x600")
+
+    def function_text_on_or_off():
+        variable = ""
+        if Console == True:
+            variable = "ON"
+        else:
+            variable = "OFF"
+        win2_label_console_on_or_off = tk.Label(window2, text=f"Console: {variable}", font=("Arial", 16, "bold"), fg="Black")
+        win2_label_console_on_or_off.place(x=65, y=120)
+
+    def console_on():
+        global Console
+        Console = True
+        function_text_on_or_off()
+
+    def console_off():
+        global Console
+        Console = False
+        function_text_on_or_off()
+
+    win2_label = tk.Label(window2, text="Console", font=("Arial", 16, "bold"), fg="black")
+    win2_label.place(x=90, y=10)
+
+    win2_button_console_on = tk.Button(window2, text="On", font=("Arial", 16, "bold"), fg="White", bg="Green", width=6, height=2, command=console_on)
+    win2_button_console_on.place(x=30, y=45)
+
+    win2_button_console_off = tk.Button(window2, text="Off", font=("Arial", 16, "bold"), fg="White", bg="Red", width=6, height=2, command=console_off)
+    win2_button_console_off.place(x=150, y=45)
+        
+
+icon = tk.PhotoImage(file="files-calculator/nastroyki.png")
+
+nastroyki_button = tk.Button(root, image=icon, width=110, height=108, fg="White", command=window2)
+nastroyki_button.place(x=135, y=79)
 
 root.mainloop()
